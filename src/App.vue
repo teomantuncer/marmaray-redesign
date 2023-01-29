@@ -15,7 +15,9 @@ export default {
 			} else {
 				this.currentStop++
 			}
-			this.$refs.stops.style.transform = `translateY(${(this.$refs.stops.children[this.currentStop].offsetTop - this.$refs.stops.children[0].offsetTop) * -1}px)`
+			setTimeout(() => {
+				this.$refs.stops.style.transform = `translateY(${(this.$refs.stops.children[this.currentStop].offsetTop - this.$refs.stops.children[0].offsetTop) * -1}px)`
+			}, 2000)
 			this.$refs.indicator.style.transform = `translateY(${(this.$refs.stops.children[this.currentStop].offsetTop + 56)}px)`
 		}
 	},
@@ -152,12 +154,14 @@ export default {
 	position: relative;
 	margin-top: 2rem;
 	font-size: 1.5rem;
-	transition: font-size 3s ease, color 3s ease;
+	transition: all 3s ease;
 }
 
 .screen ul li.is-current {
 	font-size: 2rem;
 	color: var(--color-secondary);
+	font-weight: 700;
+	transition-delay: 3s;
 }
 
 .screen ul li:before {
@@ -204,12 +208,11 @@ export default {
 	margin-top: 0;
 	position: absolute;
 	left: -10px;
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 30px 15px 0 15px;
-	border-color: #ff0000 transparent transparent transparent;
+	width: 30px;
+	height: 30px;
 	z-index: 5;
+	background-image: url(./assets/indicator.svg);
+	background-size: cover;
 	transition: transform 3s ease;
 	transform: translateY(0);
 }
@@ -221,9 +224,9 @@ export default {
 	height: 200px;
 	background: var(--color-secondary);
 	position: absolute;
-	left: -5px;
-	bottom: 30px;
-	z-index: 1;
+	left: 10px;
+	bottom: 25px;
+	z-index: -1;
 	border-radius: 0;
 	border: none;
 }
