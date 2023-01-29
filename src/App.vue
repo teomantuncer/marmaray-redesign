@@ -90,6 +90,11 @@ export default {
 	border: 3px solid var(--color-dark);
 	position: relative;
 }
+@media only screen and (max-width: 600px) {
+	.screen {
+		transform: scale(.5);
+	}
+}
 
 .screen .logo {
 	position: absolute;
